@@ -1,0 +1,10 @@
+{
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "target": "ES6",
+    "outDir": "./build",
+    "module": "commonjs",
+    "sourceMap": true
+  }
+}
