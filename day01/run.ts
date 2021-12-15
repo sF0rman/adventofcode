@@ -28,7 +28,7 @@ const part2 = (input: number[]): number => {
   return result;
 };
 
-const run = () => {
+const run = (): void => {
   const input = loadInput();
   part1(input);
   part2(input);
