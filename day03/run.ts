@@ -35,7 +35,7 @@ const part1 = (input: string[]): number => {
   const gamma = parseInt(gammaBin, 2);
   const epsilon = parseInt(epsilonBin, 2);
   const result = gamma * epsilon;
-  console.log(DAY, "- part 1", result);
+  console.log(DAY, "- part 1:", result);
   return result;
 };
 
@@ -65,6 +65,9 @@ const part2 = (input: string[]): number => {
   let co2: string;
 
   for (let i = 0; i < binarySize; i++) {
+    if (oxygen && co2) {
+      break;
+    }
     const oxBit = !oxygen && findMostCommonBit(oxygenCriteria, i, true);
     const co2Bit = !co2 && findMostCommonBit(co2Criteria, i, false);
 
@@ -78,7 +81,7 @@ const part2 = (input: string[]): number => {
   const oxygenRating = parseInt(oxygen, 2);
   const co2Rating = parseInt(co2, 2);
   const result = oxygenRating * co2Rating;
-  console.log(DAY, "- part 2", result);
+  console.log(DAY, "- part 2:", result);
   return result;
 };
 

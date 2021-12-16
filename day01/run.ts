@@ -24,7 +24,7 @@ const part2 = (input: number[]): number => {
     const current = input[i - 2] + input[i - 1] + input[i];
     current > previous && result++;
   }
-  console.log(DAY, "- part 2", result);
+  console.log(DAY, "- part 2:", result);
   return result;
 };
 
