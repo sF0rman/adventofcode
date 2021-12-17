@@ -13,5 +13,9 @@
   "devDependencies": {
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "printWidth": 120
   }
 }

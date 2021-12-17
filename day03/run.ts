@@ -40,11 +40,7 @@ const part1 = (input: string[]): number => {
 };
 
 const part2 = (input: string[]): number => {
-  const findMostCommonBit = (
-    values: string[],
-    index: number,
-    oxygen: boolean
-  ): bit => {
+  const findMostCommonBit = (values: string[], index: number, oxygen: boolean): bit => {
     let on = 0;
     let off = 0;
 
