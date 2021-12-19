@@ -2,7 +2,8 @@ import { readFileSync } from "fs";
 
 const DAY = "Day 05";
 
-type Axis = "x" | "y";
+// Using z for diagonal value
+type Axis = "x" | "y" | "z";
 
 interface Coordinates {
   x: number;
@@ -56,7 +57,7 @@ const part1 = (input: Line[]): number => {
 
     if (startX === endX) {
       populatePoints(Math.min(startY, endY), Math.max(startY, endY), "y", startX);
-    } else if (startY == endY) {
+    } else if (startY === endY) {
       populatePoints(Math.min(startX, endX), Math.max(startX, endX), "x", startY);
     }
   });
@@ -65,9 +66,49 @@ const part1 = (input: Line[]): number => {
   return totalDangerousPoints;
 };
 
+const part2 = (input: Line[]): number => {
+  let totalDangerousPoints: number = 0;
+  const grid: number[][] = [];
+
+  const populatePoints = (x: number, y: number) => {
+    grid[y] = grid[y] || [];
+    grid[y][x] = grid[y][x] || 0;
+    grid[y][x]++;
+    grid[y][x] === 2 && totalDangerousPoints++;
+  };
+
+  input.forEach((line: Line) => {
+    let startX = line.startPoint.x;
+    let startY = line.startPoint.y;
+    const endX = line.endPoint.x;
+    const endY = line.endPoint.y;
+
+    while (true) {
+      populatePoints(startX, startY);
+      if (startX === endX && startY === endY) {
+        break;
+      }
+      if (startX < endX) {
+        startX++;
+      } else if (startX > endX) {
+        startX--;
+      }
+      if (startY < endY) {
+        startY++;
+      } else if (startY > endY) {
+        startY--;
+      }
+    }
+  });
+
+  console.log(DAY, "- part 2:", totalDangerousPoints);
+  return totalDangerousPoints;
+};
+
 const run = () => {
   const input = loadInput();
   part1(input);
+  part2(input);
 };
 
 export default run;
