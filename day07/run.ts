@@ -23,14 +23,11 @@ const part1 = (input: number[]): number => {
 const part2 = (input: number[]): number => {
   let minFuel = Infinity;
   for (let target = 0; target <= Math.max(...input); target++) {
-    let fuel = input.reduce((total, value) => {
-      let distance = Math.abs(value - target);
-      let f = 0;
-      for (let i = 1; i <= distance; i++) {
-        f += i;
-      }
-      return f + total;
-    }, 0);
+    let fuel = input.reduce(
+      // n * (n + 1) / 2
+      (t, v) => (Math.abs(v - target) * (Math.abs(v - target) + 1)) / 2 + t,
+      0
+    );
     if (fuel < minFuel) {
       minFuel = fuel;
     }
